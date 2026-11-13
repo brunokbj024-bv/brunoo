@@ -1,0 +1,274 @@
+/* ============================================================
+   TEMAS
+   Cada tema é só um grupo de variáveis. Para criar o seu,
+   copie um bloco, mude o id e os valores.
+   ============================================================ */
+
+/* Tema padrão (Praia) — vale quando nada estiver marcado */
+body,
+body:has(#t-praia:checked) {
+  --fundo: #fff1cc;
+  --superficie: #fffdf5;
+  --texto: #12324a;
+  --suave: #4f6b80;
+  --destaque: #0a6fa8;
+  --sobre-destaque: #ffffff;
+  --borda: 2px solid #f2d68a;
+  --raio: 20px;
+  --sombra: 0 8px 20px rgba(10, 111, 168, .18);
+  --fonte-titulo: "Pacifico", "Brush Script MT", cursive;
+  --fonte-texto: "Nunito", "Trebuchet MS", sans-serif;
+  --peso-titulo: 400;
+}
+
+body:has(#t-jardim:checked) {
+  --fundo: #e7f3e4;
+  --superficie: #ffffff;
+  --texto: #1d3a24;
+  --suave: #4d6b53;
+  --destaque: #2f7d3b;
+  --sobre-destaque: #ffffff;
+  --borda: 1px solid #bcd9b6;
+  --raio: 10px;
+  --sombra: 0 6px 18px rgba(47, 125, 59, .15);
+  --fonte-titulo: "Lora", Georgia, serif;
+  --fonte-texto: "Work Sans", "Segoe UI", sans-serif;
+  --peso-titulo: 700;
+}
+
+body:has(#t-poente:checked) {
+  --fundo: #2a1233;
+  --superficie: #3d1c4a;
+  --texto: #fff1e0;
+  --suave: #e9b7a0;
+  --destaque: #ff8a3d;
+  --sobre-destaque: #2a1233;
+  --borda: 1px solid #6b2f5c;
+  --raio: 12px;
+  --sombra: 0 10px 30px rgba(255, 138, 61, .22);
+  --fonte-titulo: "Playfair Display", Georgia, serif;
+  --fonte-texto: "Inter", "Segoe UI", sans-serif;
+  --peso-titulo: 800;
+}
+
+body:has(#t-neon:checked) {
+  --fundo: #070b1a;
+  --superficie: #0f1630;
+  --texto: #e6faff;
+  --suave: #8fb4d0;
+  --destaque: #00e5ff;
+  --sobre-destaque: #070b1a;
+  --borda: 1px solid #1f3a6b;
+  --raio: 8px;
+  --sombra: 0 0 24px rgba(0, 229, 255, .25);
+  --fonte-titulo: "Orbitron", "Segoe UI", sans-serif;
+  --fonte-texto: "Rajdhani", "Segoe UI", sans-serif;
+  --peso-titulo: 700;
+}
+
+body:has(#t-vulcao:checked) {
+  --fundo: #1a0b0b;
+  --superficie: #2a1414;
+  --texto: #ffe9e1;
+  --suave: #d9a090;
+  --destaque: #ff5a36;
+  --sobre-destaque: #1a0b0b;
+  --borda: 2px solid #5a2418;
+  --raio: 2px;
+  --sombra: 5px 5px 0 #5a2418;
+  --fonte-titulo: "Archivo Black", Impact, sans-serif;
+  --fonte-texto: "Archivo", "Segoe UI", sans-serif;
+  --peso-titulo: 400;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  transition: background-color .3s, color .3s;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  line-height: 1.15;
+  margin: 0 0 .6em;
+}
+
+h1 { font-size: clamp(2.4rem, 8vw, 4.5rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1em; }
+
+code {
+  font-family: "DM Mono", Consolas, monospace;
+  font-size: .9em;
+  background: var(--fundo);
+  border: var(--borda);
+  border-width: 1px;
+  border-radius: calc(var(--raio) / 4);
+  padding: .05em .4em;
+}
+
+main,
+.topo,
+.rodape {
+  width: min(100% - 2rem, 62rem);
+  margin-inline: auto;
+}
+
+/* ============================================================
+   SELETOR DE TEMAS
+   ============================================================ */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: .75rem 0;
+  background: var(--fundo);
+}
+
+.seletor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.seletor legend {
+  float: left;
+  margin-right: .75rem;
+  padding: 0;
+  font-weight: 700;
+}
+
+/* esconde o botão de rádio, mas deixa o teclado funcionar */
+.seletor input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.seletor label {
+  cursor: pointer;
+  padding: .35rem 1rem;
+  background: var(--superficie);
+  color: var(--texto);
+  border: var(--borda);
+  border-radius: calc(var(--raio) * 2);
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  transition: background-color .2s, color .2s;
+}
+
+.seletor label:hover { border-color: var(--destaque); }
+
+.seletor input:checked + label {
+  background: var(--destaque);
+  color: var(--sobre-destaque);
+  border-color: var(--destaque);
+}
+
+.seletor input:focus-visible + label {
+  outline: 3px solid var(--destaque);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+.hero {
+  padding: 3rem 0 2.5rem;
+}
+
+.lead {
+  max-width: 36rem;
+  font-size: 1.3rem;
+  color: var(--suave);
+}
+
+main > section { margin-bottom: 3.5rem; }
+
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+}
+
+.cartoes > h2 { grid-column: 1 / -1; margin-bottom: 0; }
+
+.cartao {
+  padding: 1.5rem;
+  background: var(--superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.cartao p { margin: 0; color: var(--suave); }
+
+/* Tabela */
+.rolagem {
+  overflow-x: auto;
+  background: var(--superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td { padding: .85rem 1.1rem; }
+
+th {
+  background: var(--destaque);
+  color: var(--sobre-destaque);
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+}
+
+tbody tr + tr td { border-top: 1px solid var(--fundo); }
+
+/* Desafio */
+.desafio ol {
+  margin: 0;
+  padding: 1.5rem 1.5rem 1.5rem 3rem;
+  background: var(--superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.desafio li + li { margin-top: .6rem; }
+.desafio li::marker { color: var(--destaque); font-weight: 700; }
+
+/* Rodapé */
+.rodape {
+  padding: 1.5rem 0 3rem;
+  color: var(--suave);
+  font-size: .95rem;
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

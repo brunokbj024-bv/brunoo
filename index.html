@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Um site, cinco temas</title>
+  <meta name="description" content="Atividade de HTML e CSS: a mesma página com cinco temas diferentes, trocados só com CSS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700&family=Lora:wght@400;700&family=Work+Sans:wght@400;700&family=Playfair+Display:wght@400;800&family=Inter:wght@400;700&family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&family=Archivo+Black&family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Os botões de rádio ficam no topo do body para o CSS enxergar qual está marcado -->
+  <header class="topo">
+    <fieldset class="seletor">
+      <legend>Escolha um tema</legend>
+      <input type="radio" name="tema" id="t-praia" checked>
+      <label for="t-praia">Praia</label>
+      <input type="radio" name="tema" id="t-jardim">
+      <label for="t-jardim">Jardim</label>
+      <input type="radio" name="tema" id="t-poente">
+      <label for="t-poente">Pôr do sol</label>
+      <input type="radio" name="tema" id="t-neon">
+      <label for="t-neon">Neon</label>
+      <input type="radio" name="tema" id="t-vulcao">
+      <label for="t-vulcao">Vulcão</label>
+    </fieldset>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Um site, cinco temas</h1>
+      <p class="lead">Esta página nunca muda de conteúdo. Clique nos temas acima e veja cores, fontes, cantos e sombras mudarem só com CSS.</p>
+    </section>
+
+    <section class="cartoes" aria-labelledby="titulo-cartoes">
+      <h2 id="titulo-cartoes">O que você vai praticar</h2>
+      <article class="cartao">
+        <h3>Variáveis CSS</h3>
+        <p>Cada tema é um conjunto de variáveis como <code>--fundo</code> e <code>--destaque</code>. O resto do CSS só usa essas variáveis.</p>
+      </article>
+      <article class="cartao">
+        <h3>Seletor :has()</h3>
+        <p>Quando um botão de tema está marcado, o <code>body</code> troca as variáveis. Nenhuma linha de JavaScript.</p>
+      </article>
+      <article class="cartao">
+        <h3>Tipografia</h3>
+        <p>Cada tema tem um par de fontes: uma para títulos e outra para o texto corrido.</p>
+      </article>
+    </section>
+
+    <section class="tabela-area" aria-labelledby="titulo-tabela">
+      <h2 id="titulo-tabela">O que muda em cada tema</h2>
+      <div class="rolagem">
+        <table>
+          <thead>
+            <tr><th>Tema</th><th>Fonte dos títulos</th><th>Cantos</th><th>Sensação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Praia</td><td>Pacifico</td><td>Arredondados</td><td>Ensolarada e leve</td></tr>
+            <tr><td>Jardim</td><td>Lora</td><td>Suaves</td><td>Fresca e tranquila</td></tr>
+            <tr><td>Pôr do sol</td><td>Playfair Display</td><td>Médios</td><td>Quente e elegante</td></tr>
+            <tr><td>Neon</td><td>Orbitron</td><td>Pequenos, brilho</td><td>Cidade à noite</td></tr>
+            <tr><td>Vulcão</td><td>Archivo Black</td><td>Quase retos, sombra dura</td><td>Forte e intensa</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="desafio" aria-labelledby="titulo-desafio">
+      <h2 id="titulo-desafio">Desafio</h2>
+      <ol>
+        <li>Abra o <code>style.css</code> e copie o bloco de um tema.</li>
+        <li>Crie o seu: troque o nome, as cores e as fontes.</li>
+        <li>Adicione um botão novo no <code>index.html</code> com o mesmo <code>id</code> do seu tema.</li>
+        <li>Publique no GitHub Pages e envie o link.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Atividade de HTML e CSS · feita para publicar no GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
